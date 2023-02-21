@@ -1,0 +1,58 @@
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+class Heroe
+{
+    public string Nombre { get; set; }
+    public int Vida { get; set; }
+
+    public Heroe(string nombre, int vida)
+    {
+        Nombre = nombre;
+        Vida = vida;
+    }
+}
+
+class Mago : Heroe
+{
+    public int Mana { get; set; }
+
+    public Mago(string nombre, int vida, int mana) : base(nombre, vida)
+    {
+        Mana = mana;
+    }
+}
+
+class Guerrero : Heroe
+{
+    public string Arma { get; set; }
+
+    public Guerrero(string nombre, int vida, string arma) : base(nombre, vida)
+    {
+        Arma = arma;
+    }
+}
+
+class Form1 : Form
+{
+    
+    public Form1()
+    {
+        InitializeComponent();
+
+        List<Heroe> heroes = new List<Heroe>();
+
+        heroes.Add(new Guerrero("Thorgrim Martillofuerte", 200, "Hacha"));
+        heroes.Add(new Guerrero("Aric Espada de Acero", 180, "Espada"));
+        heroes.Add(new Guerrero("Hagen el Indomable", 150, "Maza"));
+
+        heroes.Add(new Mago("Elminster Aumar", 120, 200));
+        heroes.Add(new Mago("Raistlin Majere", 100, 300));
+        heroes.Add(new Mago("Gandalf el Gris", 150, 250));
+
+        foreach (Heroe heroe in heroes)
+        {
+            listBox1.Items.Add(heroe.Nombre);
+        }
+    }
+}
